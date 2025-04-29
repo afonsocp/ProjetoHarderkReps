@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const productCards = document.querySelectorAll('.product-card');
     const sections = document.querySelectorAll('section');
