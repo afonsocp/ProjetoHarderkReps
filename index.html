@@ -5,68 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harderk Reps</title>
     <link rel="icon" type="image/png" href="img/logo.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>HARDERK REPS</h1>
-        <nav>
-            <div class="buttons-container">
-                <a href="https://www.cssbuy.com/harderk" class="main-button cadastre" target="_blank">
-                    <img src="img/cssbuy-logo.png" alt="Logo CSSBuy" class="button-logo">
-                    Cadastre na CSSBUY<br>Clique Aqui e Ganhe Cupons!
-                </a>
-                <a href="https://www.youtube.com/watch?v=ByLQFFW_JlQ" class="main-button tutorial" target="_blank">
-                    <img src="img/youtube-logo.png" alt="Logo YouTube" class="button-logo">
-                    Tutorial Importação<br>Não Perca Tempo!
-                </a>
-                <a href="https://discord.gg/f6rJ9Vr6W6" class="main-button discord" target="_blank">
-                    <img src="img/discord-logo.png" alt="Logo Discord" class="button-logo">
-                    Discord<br>Entra Agora!
-                </a>
-            </div>
-            <div class="category-nav">
-                <div class="category-row">
-                    <a href="#tenis" class="category-button">
-                        <img src="img/tenis-botao.png" alt="Ícone Tênis" class="category-icon">
-                        <span>Tênis</span>
-                    </a>
-                    <a href="#camisetas" class="category-button">
-                        <img src="img/camiseta-botao.png" alt="Ícone Camiseta" class="category-icon">
-                        <span>Camisetas</span>
-                    </a>
-                    <a href="#casaco" class="category-button">
-                        <img src="img/casaco-botao.png" alt="Ícone Casaco" class="category-icon">
-                        <span>Casaco</span>
-                    </a>
-                </div>
-                <div class="category-row">
-                    <a href="#acessorios" class="category-button">
-                        <img src="img/acessorio-botao.png" alt="Ícone Acessórios" class="category-icon">
-                        <span>Acessórios</span>
-                    </a>
-                    <a href="#calca" class="category-button">
-                        <img src="img/calca-botao.png" alt="Ícone Calça" class="category-icon">
-                        <span>Calça</span>
-                    </a>
-                    <a href="#bermuda" class="category-button">
-                        <img src="img/bermuda-botao.png" alt="Ícone Bermuda" class="category-icon">
-                        <span>Bermuda</span>
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
+    <header class="main-header">
+        <div class="left-header">
+          <div class="logo">
+            <a href="inicio.html">
+                <img src="img/logo-site.png" alt="Harderk Reps" class="logo-image">
+            </a>
+          </div>  
+          <nav class="nav-bar">
+            <ul class="nav-links">
+              <li><a href="index.html">Produtos</a></li>
+              <li><a href="lojas.html">Lojas</a></li>
+              <li><a href="guias.html">Guias de Importação</a></li>
+              <li><a href="ferramentas.html">Ferramentas</a></li>
+            </ul>
+          </nav>
+        </div>
+      
+        <div class="social-icons">
+          <a href="https://www.tiktok.com/@harderkreps?lang=pt-BR" target="_blank"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.youtube.com/@harderkrepsof" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.cssbuy.com/harderk" target="_blank" class="cssbuy-link">
+            <img src="img/logo-css-branca.png" class="logo-cssbuy" 
+            onmouseover="this.src='img/logo-css-azul.png'" 
+            onmouseout="this.src='img/logo-css-branca.png'" 
+            alt="CSSBuy">
+          </a>               
+          <a href="hhttps://discord.com/invite/f6rJ9Vr6W6" target="_blank"><i class="fab fa-discord"></i></a>
+        </div>
+      
+        <div class="header-line"></div>
+      </header>
+      <div class="category-nav">
+        <div class="category-row">
+            <a href="#tenis" class="category-button">
+                <img src="img/tenis-botao.png" alt="Ícone Tênis" class="category-icon">
+                <span>Tênis</span>
+            </a>
+            <a href="#camisetas" class="category-button">
+                <img src="img/camiseta-botao.png" alt="Ícone Camiseta" class="category-icon">
+                <span>Camisetas</span>
+            </a>
+            <a href="#casaco" class="category-button">
+                <img src="img/casaco-botao.png" alt="Ícone Casaco" class="category-icon">
+                <span>Casaco</span>
+            </a>
+        </div>
+        <div class="category-row">
+            <a href="#acessorios" class="category-button">
+                <img src="img/acessorio-botao.png" alt="Ícone Acessórios" class="category-icon">
+                <span>Acessórios</span>
+            </a>
+            <a href="#calca" class="category-button">
+                <img src="img/calca-botao.png" alt="Ícone Calça" class="category-icon">
+                <span>Calça</span>
+            </a>
+            <a href="#bermuda" class="category-button">
+                <img src="img/bermuda-botao.png" alt="Ícone Bermuda" class="category-icon">
+                <span>Bermuda</span>
+            </a>
+        </div>
+    </div>
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Pesquisar produtos..." class="search-input">
         <i class="fas fa-search search-icon"></i>
     </div>
 
     <main>
-        <div id="favorites-container">
         </div>
 
         <section id="tenis">
@@ -292,6 +302,17 @@
                         Qc Pics
                     </div> 
                 </a>
+                <a href="https://cssbuy.com/item-7257629942.html?promotionCode=bf45ccacb914d29a" class="product-card" target="_blank" data-product-id="tenis-20">
+                    <button class="favorite-btn" onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite(this.parentElement);">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <img src="img/tenis/bapesta.png" alt="Tênis 8">
+                    <div class="product-name">Bapesta C <br>(Várias Cores)</div>
+                    <p class="price">¥150</p>
+                    <div class="qc-pics" onclick="event.stopPropagation(); window.open('https://finds.ly/product/weidian/7257629942', '_blank');">
+                        Qc Pics
+                    </div> 
+                </a>
             </div>
         </section>
 
@@ -416,6 +437,17 @@
                     <div class="product-name">Camiseta GymShark<br>(Várias cores)</div>
                     <p class="price">¥39</p>
                     <div class="qc-pics" onclick="event.stopPropagation(); window.open('https://finds.ly/product/taobao/611493947097', '_blank');">
+                        Qc Pics
+                    </div> 
+                </a>
+                <a href="https://cssbuy.com/item-7237833156.html?promotionCode=bf45ccacb914d29a" class="product-card" target="_blank" data-product-id="camiseta-12">
+                    <button class="favorite-btn" onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite(this.parentElement);">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <img src="img/camisetas/jersey-balenciaga.png" alt="Camiseta 8">
+                    <div class="product-name">Jersey Balenciaga<br>(Preta)</div>
+                    <p class="price">¥220</p>
+                    <div class="qc-pics" onclick="event.stopPropagation(); window.open('https://finds.ly/product/weidian/7237833156', '_blank');">
                         Qc Pics
                     </div> 
                 </a>
@@ -902,9 +934,15 @@
                 <a href="https://www.tiktok.com/@harderkreps?lang=pt-BR" target="_blank"><i class="fab fa-tiktok"></i></a>
                 <a href="https://discord.gg/hwKzfEBa" target="_blank"><i class="fab fa-discord"></i></a>
                 <a href="https://www.youtube.com/@harderkrepsof" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.cssbuy.com/harderk" target="_blank" class="cssbuy-link">
+                    <img src="img/logo-css-branca.png" class="logo-cssbuy-footer" 
+                    onmouseover="this.src='img/logo-css-azul.png'" 
+                    onmouseout="this.src='img/logo-css-branca.png'" 
+                    alt="CSSBuy">
+                 </a>   
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
