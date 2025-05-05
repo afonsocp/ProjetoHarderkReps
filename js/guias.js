@@ -237,8 +237,238 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'batches': {
             title: 'Guia de Batches',
-            video: 'https://www.youtube.com/embed/VIDEO_ID_AQUI',
-            content: 'EM BREVE'
+            content: `
+                <div class="sneaker-batches">
+                    <!-- Air Jordan 1 -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Air Jordan 1</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>LJR Batch</p>
+                            <p class="price">¥450-500</p>
+                        </div>
+                        <div class="batch-tier mid-tier">
+                            <h4>Mid Tier</h4>
+                            <p>DG Batch</p>
+                            <p class="price">¥300-350</p>
+                        </div>
+                        <div class="batch-tier budget-tier">
+                            <h4>Budget</h4>
+                            <p>DT Batch</p>
+                            <p class="price">¥200-250</p>
+                        </div>
+                    </div>
+
+                    <!-- Air Jordan 4 -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Air Jordan 4</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>GX Batch</p>
+                            <p class="price">¥450-500</p>
+                        </div>
+                        <div class="batch-tier mid-tier">
+                            <h4>Mid Tier</h4>
+                            <p>KX Batch</p>
+                            <p class="price">¥300-350</p>
+                        </div>
+                        <div class="batch-tier budget-tier">
+                            <h4>Budget</h4>
+                            <p>TG Batch</p>
+                            <p class="price">¥200-250</p>
+                        </div>
+                    </div>
+
+                    <!-- Yeezy 350 V2 -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Yeezy 350 V2</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>LW Batch</p>
+                            <p class="price">¥400-450</p>
+                        </div>
+                        <div class="batch-tier mid-tier">
+                            <h4>Mid Tier</h4>
+                            <p>OG Batch</p>
+                            <p class="price">¥250-300</p>
+                        </div>
+                        <div class="batch-tier budget-tier">
+                            <h4>Budget</h4>
+                            <p>DT Batch</p>
+                            <p class="price">¥150-200</p>
+                        </div>
+                    </div>
+
+                    <!-- Dunk Low -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Dunk Low</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>M Batch</p>
+                            <p class="price">¥300-400</p>
+                        </div>
+                        <div class="batch-tier mid-tier">
+                            <h4>Mid Tier</h4>
+                            <p>VT Batch</p>
+                            <p class="price">¥100-200</p>
+                        </div>
+                    </div>
+
+                    <!-- Air Force 1 -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Air Force 1</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>XP Batch</p>
+                            <p class="price">¥200-250</p>
+                        </div>
+                        <div class="batch-tier mid-tier">
+                            <h4>Mid Tier</h4>
+                            <p>G Batch</p>
+                            <p class="price">¥100-200</p>
+                        </div>
+                        <div class="batch-tier budget-tier">
+                            <h4>Budget</h4>
+                            <p>DT Batch</p>
+                            <p class="price">¥120-150</p>
+                        </div>
+                    </div>
+
+                    <!-- Yeezy 700 -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Yeezy 700</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>LW Batch</p>
+                            <p class="price">¥400-500</p>
+                        </div>
+                        <div class="batch-tier mid-tier">
+                            <h4>Mid Tier</h4>
+                            <p>OG Batch</p>
+                            <p class="price">¥300-350</p>
+                        </div>
+                        <div class="batch-tier budget-tier">
+                            <h4>Budget</h4>
+                            <p>X Batch</p>
+                            <p class="price">¥200-250</p>
+                        </div>
+                    </div>
+
+                    <!-- Air Jordan 11 -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Air Jordan 11</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>LJR Batch</p>
+                            <p class="price">¥450-500</p>
+                        </div>
+                        <div class="batch-tier mid-tier">
+                            <h4>Mid Tier</h4>
+                            <p>DG Batch</p>
+                            <p class="price">¥300-350</p>
+                        </div>
+                        <div class="batch-tier budget-tier">
+                            <h4>Budget</h4>
+                            <p>DT Batch</p>
+                            <p class="price">¥200-250</p>
+                        </div>
+                    </div>
+
+                    <!-- Yeezy 500 -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Yeezy 500</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>LW Batch</p>
+                            <p class="price">¥400-450</p>
+                        </div>
+                        <div class="batch-tier mid-tier">
+                            <h4>Mid Tier</h4>
+                            <p>OG Batch</p>
+                            <p class="price">¥250-300</p>
+                        </div>
+                        <div class="batch-tier budget-tier">
+                            <h4>Budget</h4>
+                            <p>X Batch</p>
+                            <p class="price">¥180-220</p>
+                        </div>
+                    </div>
+
+                    <!-- Air Jordan 3 -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Air Jordan 3</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>GX Batch</p>
+                            <p class="price">¥400-450</p>
+                        </div>
+                        <div class="batch-tier mid-tier">
+                            <h4>Mid Tier</h4>
+                            <p>DG Batch</p>
+                            <p class="price">¥250-300</p>
+                        </div>
+                        <div class="batch-tier budget-tier">
+                            <h4>Budget</h4>
+                            <p>DT Batch</p>
+                            <p class="price">¥180-220</p>
+                        </div>
+                    </div>
+
+                    <!-- Yeezy Slide -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Yeezy Slide</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>LW Batch</p>
+                            <p class="price">¥100-150</p>
+                        </div>
+                        <div class="batch-tier budget-tier">
+                            <h4>Budget</h4>
+                            <p>LW B GRADE Batch</p>
+                            <p class="price">¥50-100</p>
+                        </div>
+                    </div>
+
+                    <!-- Air Jordan 6 -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Air Jordan 6</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>LJR Batch</p>
+                            <p class="price">¥450-500</p>
+                        </div>
+                        <div class="batch-tier mid-tier">
+                            <h4>Mid Tier</h4>
+                            <p>DG Batch</p>
+                            <p class="price">¥300-350</p>
+                        </div>
+                        <div class="batch-tier budget-tier">
+                            <h4>Budget</h4>
+                            <p>DT Batch</p>
+                            <p class="price">¥200-250</p>
+                        </div>
+                    </div>
+
+                    <!-- Yeezy Foam Runner -->
+                    <div class="sneaker-item">
+                        <h3><i class="fas fa-shoe-prints"></i> Yeezy Foam Runner</h3>
+                        <div class="batch-tier top-tier">
+                            <h4>Top Tier</h4>
+                            <p>LW Batch</p>
+                            <p class="price">¥100-250</p>
+                        </div>
+                        <div class="batch-tier budget-tier">
+                            <h4>Budget</h4>
+                            <p>LW B GRADE Batch</p>
+                            <p class="price">¥55-100</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="important-note" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; margin-top: 20px;">
+                        <strong style="color: #ff9800;">IMPORTANTE:</strong>
+                        <p>As batches acima podem sofrer alterações com o tempo, por isso, sempre verifique o preço antes de comprar.</p>
+                </div>
+            `
         }
     };
 

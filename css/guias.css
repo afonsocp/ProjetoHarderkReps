@@ -406,9 +406,9 @@ html {
   position: relative;
   background-color: #1a1a2e;
   margin: 5% auto;
-  padding: 20px;
-  width: 90%;
-  max-width: 800px;
+  padding: 30px;
+  width: 95%;
+  max-width: 1200px;
   border-radius: 10px;
   max-height: 90vh;
   overflow-y: auto;
@@ -665,6 +665,88 @@ html {
     }
     
     .glossary-item {
+        padding: 15px;
+    }
+}
+
+/* Estilos para o Guia de Batches */
+.sneaker-batches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.sneaker-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sneaker-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.sneaker-item h3 {
+    color: #0084ff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sneaker-item h3 i {
+    width: 24px;
+    text-align: center;
+}
+
+.batch-tier {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.batch-tier h4 {
+    color: #6bd5ff;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.batch-tier p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.batch-tier .price {
+    color: #00ff88;
+    font-weight: 600;
+}
+
+.top-tier {
+    border-left: 4px solid #00ff88;
+}
+
+.mid-tier {
+    border-left: 4px solid #ffd700;
+}
+
+.budget-tier {
+    border-left: 4px solid #ff4444;
+}
+
+@media (max-width: 768px) {
+    .sneaker-batches {
+        grid-template-columns: 1fr;
+    }
+    
+    .sneaker-item {
         padding: 15px;
     }
 }
