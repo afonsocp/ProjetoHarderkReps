@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harderk Reps - Ferramentas</title>
+    <title>Harderk Reps - Calculadora de Frete</title>
     <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="stylesheet" href="css/ferramentas.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
             <li><a href="produtos.html">Produtos</a></li>
             <li><a href="lojas.html">Lojas</a></li>
             <li><a href="guias.html">Guias de Importação</a></li>
-            <li><a href="ferramentas.html">Ferramentas</a></li>
+            <li><a href="ferramentas.html">Calculadora de Frete</a></li>
           </ul>
         </nav>
       </div>
@@ -43,8 +43,308 @@
     </header>
     
     <main style="padding: 40px;">
-      <h1 style="color: var(--light-blue);">EM BREVE</h1>
-      <p style="color: white;"></p>
+      <h1 style="color: var(--light-blue); text-align: center;">Calculadora de Frete</h1>
+      <div id="wizard-frete" class="wizard-container">
+        <!-- Etapas do wizard -->
+        <div class="wizard-steps">
+          <div class="wizard-step active" id="step-indicator-1">1 Produtos</div>
+          <div class="wizard-step" id="step-indicator-2">2 Extras de produto</div>
+          <div class="wizard-step" id="step-indicator-3">3 Extras de pacote</div>
+          <div class="wizard-step" id="step-indicator-4">4 Frete</div>
+          <div class="wizard-step" id="step-indicator-5">5 Resultado</div>
+        </div>
+        <!-- Conteúdo das etapas -->
+        <div class="wizard-content">
+          <!-- Etapa 1: Produto -->
+          <div class="wizard-pane" id="step-produto">
+            <div id="produtos-container">
+              <div class="produto-bloco">
+                <label>Nome do Produto</label>
+                <input type="text" class="input-wizard nome-produto" placeholder="Ex: Tênis Branco">
+                <label>Preço do Produto (¥)</label>
+                <input type="number" class="input-wizard preco-produto" placeholder="Ex: 320">
+                <label>Peso do Produto (g)</label>
+                <input type="number" class="input-wizard peso-produto" placeholder="Ex: 1000">
+              </div>
+            </div>
+            <button class="main-button" id="adicionar-produto" style="margin: 10px 0 20px 0; background: #23233a; color: #00bfff; border: 1px solid #00bfff;">Adicionar produto</button>
+            <button class="main-button" id="next-to-extras-produto">Confirmar</button>
+          </div>
+          <!-- Etapa 2: Extras de produto -->
+          <div class="wizard-pane" id="step-extras-produto" style="display:none;">
+            <div class="extras-produto-grid">
+              <label><input type="checkbox" class="extra-produto" value="2"> Tirar fotos (2¥) <span title="Fotos do produto"></i></span></label>
+              <label><input type="checkbox" class="extra-produto" value="6"> Faça vídeo (6¥) <span title="Vídeo do produto"></i></span></label>
+              <label><input type="checkbox" class="extra-produto" value="4"> Tirar medidas (4¥) <span title="Medidas do produto"></i></span></label>
+              <label><input type="checkbox" class="extra-produto" value="6"> Coluna de ar (6¥) <span title="Proteção de ar"></i></span></label>
+              <label><input type="checkbox" class="extra-produto" value="5"> Shoe Tree (5¥) <span title="Suporte para sapatos"></i></span></label>
+              <label><input type="checkbox" class="extra-produto" value="5"> Caixa de proteção (5¥) <span title="Caixa extra"></i></span></label>
+              <label><input type="checkbox" class="extra-produto" value="4"> Compra prioritária (4¥) <span title="Prioridade na compra"></i></span></label>
+            </div>
+            <div style="margin-top: 30px; display: flex; justify-content: flex-end; gap: 10px;">
+              <button class="main-button" id="back-to-produto2">Anterior</button>
+              <button class="main-button" id="next-to-extras-pacote">Próximo</button>
+            </div>
+          </div>
+          <!-- Etapa 3: Extras de pacote -->
+          <div class="wizard-pane" id="step-extras-pacote" style="display:none;">
+            <div style="margin-bottom: 20px;">
+              <span>Tipo de embalagem de envio:</span>
+              <label style="margin-left: 20px;"><input type="radio" name="embalagem" value="Saco de plástico" checked> Saco de plástico</label>
+              <label style="margin-left: 20px;"><input type="radio" name="embalagem" value="Caixa"> Caixa</label>
+            </div>
+            <div class="extras-pacote-grid">
+              <label><input type="checkbox" class="extra-pacote" value="20"> Embalagem prioritária (20¥) <span title="Prioridade na embalagem"></i></span></label>
+              <label><input type="checkbox" class="extra-pacote" value="10"> Bolsa a vácuo (10¥) <span title="Bolsa para compactar"></i></span></label>
+              <label><input type="checkbox" class="extra-pacote" value="4"> Plástico bolha (4¥) <span title="Proteção extra"></i></span></label>
+              <label><input type="checkbox" class="extra-pacote" value="1"> Fatura de impressão e colar (1¥) <span title="Imprimir fatura"></i></span></label>
+              <label><input type="checkbox" class="extra-pacote" value="1"> Cole o rótulo personalizado (1¥) <span title="Rótulo personalizado"></i></span></label>
+              <label><input type="checkbox" class="extra-pacote" value="0"> Jogar caixa fora (0¥) <span title="Descartar caixa"></i></span></label>
+            </div>
+            <div style="margin-top: 30px; display: flex; justify-content: flex-end; gap: 10px;">
+              <button class="main-button" id="back-to-extras-produto">Anterior</button>
+              <button class="main-button" id="next-to-fretes">Próximo</button>
+            </div>
+          </div>
+          <!-- Etapa 4: Fretes -->
+          <div class="wizard-pane" id="step-fretes" style="display:none;">
+            <div class="fretes-grid">
+              <!-- 13 cards de frete -->
+              <div class="frete-card" data-frete="0">
+                <img src="img/ems.png" class="frete-img" alt="Frete 1">
+                <h3>HZ-EMS 0-30kg</h3>
+                <p>Peso inicial: 170¥/500g<br>Adicional: 55¥/500g<br>Entrega: 12-30 dias<br>Peso máx: 30kg</p>
+                <button class="main-button calcular-frete" >Calcular</button>
+                <div class="resultado-frete"></div>
+              </div>
+              <div class="frete-card" data-frete="1">
+                <img src="img/jd-tyg.png" class="frete-img" alt="Frete 2">
+                <h3>TYG-BR-EXP-F 0-3kg</h3>
+                <p>Peso inicial: 50¥/100g<br>Adicional: 9.50¥/100g<br>Entrega: 12-30 dias<br>Peso máx: 3kg</p>
+                <button class="main-button calcular-frete">Calcular</button>
+                <div class="resultado-frete"></div>
+              </div>
+              <div class="frete-card" data-frete="2">
+                <img src="img/fj.png" class="frete-img" alt="Frete 3">
+                <h3>FJ-BR-EXP-F :0-20kg</h3>
+                <p>Peso inicial: 50¥/100g<br>Adicional: 11¥/100g<br>Entrega: 12-30 dias<br>Peso máx: 20kg</p>
+                <button class="main-button calcular-frete">Calcular</button>
+                <div class="resultado-frete"></div>
+              </div>
+              <div class="frete-card" data-frete="3">
+                <img src="img/jd-tyg.png" class="frete-img" alt="JD-EXP-EF 0-3kg">
+                <h3>JD-EXP-EF :0-3kg</h3>
+                <p>Peso inicial: 55¥/100g<br>Adicional: 10.50¥/100g<br>Entrega: 7-15 dias<br>Peso máx: 3kg</p>
+                <button class="main-button calcular-frete">Calcular</button>
+                <div class="resultado-frete"></div>
+              </div>
+              <div class="frete-card" data-frete="4">
+                <img src="img/jd-tyg.png" class="frete-img" alt="JD-EXP-EF Battery-line">
+                <h3>JD-EXP-EF Battery-line</h3>
+                <p>Peso inicial: 80¥/100g<br>Adicional: 15¥/100g<br>Entrega: 7-15 dias<br>Peso máx: 10kg</p>
+                <button class="main-button calcular-frete">Calcular</button>
+                <div class="resultado-frete"></div>
+              </div>
+              <!-- ... até 13 cards ... -->
+              <div class="frete-card" data-frete="12">
+                <img src="img/china.png" class="frete-img" alt="Frete 13">
+                <h3>China Post SAL 0-30kg</h3>
+                <p>Peso inicial: 168¥/1000g<br>Adicional: 63¥/1000g<br>Entrega: 20-60 dias<br>Peso máx: 30kg</p>
+                <button class="main-button calcular-frete">Calcular</button>
+                <div class="resultado-frete"></div>
+              </div>
+            </div>
+            <button class="main-button" id="back-to-extras-pacote" style="margin-top: 20px;">Anterior</button>
+          </div>
+          <!-- Etapa 5: Resultado -->
+          <div class="wizard-pane" id="step-resultado" style="display:none;">
+            <h2>Resultado do Frete</h2>
+            <div id="resultado-final"></div>
+            <button class="main-button" id="back-to-fretes" style="margin-top: 20px;">Voltar</button>
+          </div>
+        </div>
+      </div>
+      <script src="js/ferramentas.js"></script>
+      <script>
+        // Função para atualizar o indicador de etapa ativa
+        function setStepIndicator(step) {
+          for (let i = 1; i <= 5; i++) {
+            document.getElementById('step-indicator-' + i).classList.remove('active');
+          }
+          document.getElementById('step-indicator-' + step).classList.add('active');
+        }
+        // Wizard navegação
+        const stepProduto = document.getElementById('step-produto');
+        const stepExtrasProduto = document.getElementById('step-extras-produto');
+        const stepExtrasPacote = document.getElementById('step-extras-pacote');
+        const stepFretes = document.getElementById('step-fretes');
+        const stepResultado = document.getElementById('step-resultado');
+        // Variáveis para armazenar seleções
+        let produtos = [];
+        let extrasProdutoSelecionados = [];
+        let extrasPacoteSelecionados = [];
+        // Adicionar produto dinamicamente
+        const produtosContainer = document.getElementById('produtos-container');
+        document.getElementById('adicionar-produto').onclick = () => {
+          const bloco = document.createElement('div');
+          bloco.className = 'produto-bloco';
+          bloco.innerHTML = `
+            <label>Nome do Produto</label>
+            <input type="text" class="input-wizard nome-produto" placeholder="Ex: Tênis Branco">
+            <label>Preço do Produto (¥)</label>
+            <input type="number" class="input-wizard preco-produto" placeholder="Ex: 320">
+            <label>Peso do Produto (g)</label>
+            <input type="number" class="input-wizard peso-produto" placeholder="Ex: 1000">
+            <button type="button" class="remover-produto" style="margin: 8px 0 18px 0; background: #ff4444; color: #fff; border: none; border-radius: 6px; padding: 6px 16px; cursor: pointer;">Remover</button>
+          `;
+          produtosContainer.appendChild(bloco);
+          bloco.querySelector('.remover-produto').onclick = () => bloco.remove();
+        };
+        // Ao avançar da etapa produto, salva todos os produtos
+        const nextToExtrasProdutoBtn = document.getElementById('next-to-extras-produto');
+        nextToExtrasProdutoBtn.onclick = () => {
+          produtos = [];
+          document.querySelectorAll('.produto-bloco').forEach(bloco => {
+            const nome = bloco.querySelector('.nome-produto').value || '';
+            const preco = parseFloat(bloco.querySelector('.preco-produto').value) || 0;
+            const peso = parseFloat(bloco.querySelector('.peso-produto').value) || 0;
+            produtos.push({ nome, preco, peso });
+          });
+          stepProduto.style.display = 'none';
+          stepExtrasProduto.style.display = '';
+          setStepIndicator(2);
+        };
+        // Ao avançar da etapa extras de produto, salva os extras
+        const nextToExtrasPacoteBtn = document.getElementById('next-to-extras-pacote');
+        nextToExtrasPacoteBtn.onclick = () => {
+          extrasProdutoSelecionados = Array.from(document.querySelectorAll('.extra-produto:checked')).map(cb => parseFloat(cb.value));
+          stepExtrasProduto.style.display = 'none';
+          stepExtrasPacote.style.display = '';
+          setStepIndicator(3);
+        };
+        // Ao avançar da etapa extras de pacote, salva os extras
+        const nextToFretesBtn = document.getElementById('next-to-fretes');
+        nextToFretesBtn.onclick = () => {
+          extrasPacoteSelecionados = Array.from(document.querySelectorAll('.extra-pacote:checked')).map(cb => parseFloat(cb.value));
+          stepExtrasPacote.style.display = 'none';
+          stepFretes.style.display = '';
+          setStepIndicator(4);
+        };
+        document.getElementById('back-to-produto2').onclick = () => {
+          stepExtrasProduto.style.display = 'none';
+          stepProduto.style.display = '';
+          setStepIndicator(1);
+        };
+        document.getElementById('back-to-extras-produto').onclick = () => {
+          stepExtrasPacote.style.display = 'none';
+          stepExtrasProduto.style.display = '';
+          setStepIndicator(2);
+        };
+        document.getElementById('back-to-fretes').onclick = () => {
+          stepResultado.style.display = 'none';
+          stepFretes.style.display = '';
+          setStepIndicator(4);
+        };
+        document.getElementById('back-to-extras-pacote').onclick = () => {
+          stepFretes.style.display = 'none';
+          stepExtrasPacote.style.display = '';
+          setStepIndicator(3);
+          // Limpa mensagens de erro dos cards de frete
+          document.querySelectorAll('.resultado-frete').forEach(div => div.textContent = '');
+        };
+        // Lógica de cálculo para cada frete
+        const formulas = [
+          { custom: 'HZEMS' }, // Frete 1 (HZ-EMS)
+          { custom: 'TYG' }, // Frete 2 (TYG)
+          { custom: 'FJBR' }, // Frete 3 (FJ-BR-EXP-F)
+          { custom: 'JDEXPEF' }, // Frete 4 (JD-EXP-EF :0-3kg)
+          { custom: 'JDBATTERY' }, // Frete 5 (JD-EXP-EF Battery-line)
+          { fixo: 90, adicional: 90 },
+          { fixo: 160, adicional: 80 },
+          { fixo: 168, adicional: 80 },
+          { fixo: 103, adicional: 80 },
+          { fixo: 150, adicional: 75 },
+          { fixo: 145, adicional: 80 },
+          { fixo: 170, adicional: 15 },
+        ];
+        document.querySelectorAll('.calcular-frete').forEach((btn, idx) => {
+          btn.onclick = function() {
+            // Soma todos os pesos dos produtos
+            const pesoTotal = produtos.reduce((a, b) => a + b.peso, 0);
+            // Soma todos os preços dos produtos
+            const valorProdutos = produtos.reduce((a, b) => a + b.preco, 0);
+            // Nomes dos produtos
+            const nomesProdutos = produtos.map(p => p.nome).filter(Boolean).join(', ');
+            const resultadoDiv = this.nextElementSibling;
+            if (isNaN(pesoTotal) || pesoTotal <= 0) {
+              resultadoDiv.textContent = 'Digite um peso válido (maior que 0).';
+              return;
+            }
+            let frete;
+            if (formulas[idx].custom === 'TYG') {
+              frete = window.calcularFreteTYG(pesoTotal);
+            } else if (formulas[idx].custom === 'HZEMS') {
+              frete = window.calcularFreteHZEMS(pesoTotal);
+              if (typeof frete === 'string') {
+                resultadoDiv.textContent = frete;
+                return;
+              }
+            } else if (formulas[idx].custom === 'FJBR') {
+              frete = window.calcularFreteFJBR(pesoTotal);
+              if (typeof frete === 'string') {
+                resultadoDiv.textContent = frete;
+                return;
+              }
+            } else if (formulas[idx].custom === 'JDEXPEF') {
+              frete = window.calcularFreteJDEXPEF(pesoTotal);
+              if (typeof frete === 'string') {
+                resultadoDiv.textContent = frete;
+                return;
+              }
+            } else if (formulas[idx].custom === 'JDBATTERY') {
+              frete = window.calcularFreteJDBattery(pesoTotal);
+              if (typeof frete === 'string') {
+                resultadoDiv.textContent = frete;
+                return;
+              }
+            } else {
+              frete = formulas[idx].fixo;
+              if (pesoTotal > 100) {
+                const adicionais = Math.ceil((pesoTotal - 100) / 100);
+                frete += adicionais * formulas[idx].adicional;
+              }
+            }
+            resultadoDiv.textContent = `Frete estimado: ¥ ${frete.toFixed(2)}`;
+            // Calcular total dos extras
+            const totalExtrasProduto = extrasProdutoSelecionados.reduce((a, b) => a + b, 0);
+            const totalExtrasPacote = extrasPacoteSelecionados.reduce((a, b) => a + b, 0);
+            const custoTotal = valorProdutos + totalExtrasProduto + totalExtrasPacote + frete;
+            // Captura nomes e valores dos extras selecionados
+            const labelsExtrasProduto = Array.from(document.querySelectorAll('.extra-produto:checked')).map(cb => cb.parentElement.innerText.trim());
+            const labelsExtrasPacote = Array.from(document.querySelectorAll('.extra-pacote:checked')).map(cb => cb.parentElement.innerText.trim());
+            // Monta HTML dos extras
+            const htmlExtrasProduto = labelsExtrasProduto.length ? `<div style='margin-bottom: 6px;'><b>Extras do produto:</b><ul style='margin: 6px 0 0 0; padding-left: 18px; text-align: left; color: #b6c6e3; font-size: 0.98rem;'>${labelsExtrasProduto.map(e => `<li>${e}</li>`).join('')}</ul></div>` : '';
+            const htmlExtrasPacote = labelsExtrasPacote.length ? `<div style='margin-bottom: 6px;'><b>Extras do pacote:</b><ul style='margin: 6px 0 0 0; padding-left: 18px; text-align: left; color: #b6c6e3; font-size: 0.98rem;'>${labelsExtrasPacote.map(e => `<li>${e}</li>`).join('')}</ul></div>` : '';
+            // Monta HTML do frete
+            const htmlFrete = `<div style='margin-bottom: 6px;'><b>Frete selecionado:</b><ul style='margin: 6px 0 0 0; padding-left: 18px; text-align: left; color: #b6c6e3; font-size: 1.05rem;'><li style='color: #b6c6e3;'>${btn.parentElement.querySelector('h3').textContent}</li></ul></div>`;
+            document.getElementById('resultado-final').innerHTML = `
+              <div style="max-width: 400px; margin: 0 auto; background: #18182a; border-radius: 18px; box-shadow: 0 4px 24px #0007; padding: 32px 28px 28px 28px; text-align: center;">
+                <div style='font-size:1.08rem; color:#b6c6e3; margin-bottom: 8px;'><b>Produtos:</b> <span style='color:#fff;'>${nomesProdutos}</span></div>
+                ${htmlExtrasProduto}
+                ${htmlExtrasPacote}
+                ${htmlFrete}
+                <div style="font-size: 1.08rem; color: #b6c6e3; margin-bottom: 10px;">Peso total: <span style='color: #fff; font-weight: 600;'>${pesoTotal}g</span></div>
+                <div style="font-size: 1.08rem; color: #b6c6e3; margin-bottom: 18px;">Frete estimado: <span style='color: #fff; font-weight: 600;'>¥ ${frete.toFixed(2)}</span></div>
+                <div style="font-size: 1.13rem; font-weight: 700; color: #fff; margin-top: 18px;">Custo total do pacote:</div>
+                <div style="font-size: 1.35rem; color: #00ff88; font-weight: 800; margin-top: 6px; letter-spacing: 1px;">¥ ${custoTotal.toFixed(2)}</div>
+              </div>
+            `;
+            stepFretes.style.display = 'none';
+            stepResultado.style.display = '';
+            setStepIndicator(5);
+          };
+        });
+      </script>
     </main>
     <footer>
       <div class="footer-content">
