@@ -259,13 +259,14 @@
           { custom: 'FJBR' }, // Frete 3 (FJ-BR-EXP-F)
           { custom: 'JDEXPEF' }, // Frete 4 (JD-EXP-EF :0-3kg)
           { custom: 'JDBATTERY' }, // Frete 5 (JD-EXP-EF Battery-line)
+          { custom: 'CHINAPOSTSAL' }, // Frete 13 (China Post SAL)
           { fixo: 90, adicional: 90 },
           { fixo: 160, adicional: 80 },
           { fixo: 168, adicional: 80 },
           { fixo: 103, adicional: 80 },
           { fixo: 150, adicional: 75 },
           { fixo: 145, adicional: 80 },
-          { fixo: 170, adicional: 15 },
+          { fixo: 170, adicional: 15 }
         ];
         document.querySelectorAll('.calcular-frete').forEach((btn, idx) => {
           btn.onclick = function() {
@@ -303,6 +304,12 @@
               }
             } else if (formulas[idx].custom === 'JDBATTERY') {
               frete = window.calcularFreteJDBattery(pesoTotal);
+              if (typeof frete === 'string') {
+                resultadoDiv.textContent = frete;
+                return;
+              }
+            } else if (formulas[idx].custom === 'CHINAPOSTSAL') {
+              frete = window.calcularFreteChinaPostSAL(pesoTotal);
               if (typeof frete === 'string') {
                 resultadoDiv.textContent = frete;
                 return;

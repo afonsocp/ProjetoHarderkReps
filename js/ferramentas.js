@@ -100,3 +100,25 @@ function calcularFreteJDBattery(peso) {
   return frete;
 }
 window.calcularFreteJDBattery = calcularFreteJDBattery;
+
+// Função para calcular o frete China Post SAL
+function calcularFreteChinaPostSAL(peso) {
+  if (isNaN(peso) || peso <= 0) {
+    return 'Por favor, insira um peso válido.';
+  }
+  if (peso > 30000) {
+    return 'Peso máximo permitido é 30.000g (30 kg).';
+  }
+  const precoBase = 168; // até 1000g
+  const precoPor1000g = 63;
+  let frete;
+  if (peso <= 1000) {
+    frete = precoBase;
+  } else {
+    const pesoExcedente = peso - 1000;
+    const blocosAdicionais = Math.ceil(pesoExcedente / 1000);
+    frete = precoBase + blocosAdicionais * precoPor1000g;
+  }
+  return frete;
+}
+window.calcularFreteChinaPostSAL = calcularFreteChinaPostSAL;
