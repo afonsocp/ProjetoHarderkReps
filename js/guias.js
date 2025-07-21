@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'recarga': {
             title: 'Recarga',
-            video: 'https://www.youtube.com/watch?v=0mr75Wv3jFo',
+            video: 'https://www.youtube.com/embed/0mr75Wv3jFo?si=901_P6iveABsV5TN',
             content: `<a href="https://bytemax.exchange?ref=HARD10" target="_blank" class="track-link" style="background-color: #0084ff; color: white; text-decoration: none; display: inline-block; padding: 12px 24px; border-radius: 8px; font-weight: 600; margin: 15px 0; box-shadow: 0 4px 15px rgba(0, 132, 255, 0.3); transition: all 0.3s ease;">Link do ByteMax</a>
                     <div class="important-note" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; margin-top: 20px;">
                         <strong style="color: #ff9800;">IMPORTANTE:</strong>
