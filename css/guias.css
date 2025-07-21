@@ -538,8 +538,9 @@ html {
 
 .guide-content .guide-image {
     background: rgba(0, 0, 0, 0.2);
+    margin: 10px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .guide-content img {
