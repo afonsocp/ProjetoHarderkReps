@@ -428,16 +428,96 @@ html {
   }
 }
 
-@media (max-width: 768px) {
-  .nav-links {
-    gap: 12px;
+/* Ajustes para tablets */
+@media (max-width: 1024px) {
+  .main-header {
+    padding: 15px 30px;
   }
+  
+  .guide-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 30px 20px;
+  }
+  
+  .guide-block {
+    padding: 20px;
+  }
+  
+  .sneaker-batches {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+    text-align: center;
+  }
+  
+  .left-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .social-icons {
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .social-icons a {
+    margin-left: 0;
+  }
+  
   .logo-image {
     height: 32px;
   }
+  
   .main-button {
-    padding: 12px 25px;
-    font-size: 0.9rem;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px 25px;
+    font-size: 1rem;
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .guide-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 15px;
+  }
+  
+  .guide-block {
+    padding: 20px;
+  }
+  
+  .guide-title {
+    font-size: 1.5rem;
+  }
+  
+  .guide-icon {
+    font-size: 2rem;
+  }
+  
+  .sneaker-batches {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -891,6 +971,111 @@ html {
     
     .glossary-item {
         padding: 15px;
+    }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+    .main-header {
+        padding: 10px 15px;
+    }
+    
+    .logo-image {
+        height: 30px;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+    
+    .social-icons a {
+        font-size: 1.2rem;
+        padding: 3px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+    
+    .main-button {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        min-width: 200px;
+    }
+    
+    .guide-container {
+        padding: 15px 10px;
+        gap: 15px;
+    }
+    
+    .guide-block {
+        padding: 15px;
+    }
+    
+    .guide-title {
+        font-size: 1.3rem;
+    }
+    
+    .guide-icon {
+        font-size: 1.8rem;
+    }
+    
+    .guide-description {
+        font-size: 0.9rem;
+    }
+    
+    .guide-link {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        padding: 15px;
+    }
+    
+    .close-modal {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .glossary-terms {
+        gap: 10px;
+    }
+    
+    .glossary-item {
+        padding: 12px;
+    }
+    
+    .glossary-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .sneaker-item {
+        padding: 15px;
+    }
+    
+    .sneaker-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .batch-tier {
+        padding: 8px;
+    }
+    
+    .batch-tier h4 {
+        font-size: 0.9rem;
+    }
+    
+    .batch-tier p {
+        font-size: 0.8rem;
     }
 }
 

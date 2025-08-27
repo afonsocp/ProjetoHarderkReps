@@ -563,18 +563,47 @@ footer::before {
 }
 
 
+/* Ajustes para tablets */
+@media (max-width: 1024px) {
+    .main-header {
+        padding: 15px 30px;
+    }
+    
+    .content {
+        padding: 30px 25px;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+    
+    .about-flex {
+        gap: 30px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         width: 100%;
     }
 
     .content {
-        padding: 20px;
+        padding: 20px 15px;
     }
 
     .about-flex {
         flex-direction: column;
         text-align: center;
+        gap: 20px;
     }
 
     .about-image {
@@ -582,47 +611,125 @@ footer::before {
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
         color: #0084ff;
+        margin-bottom: 20px;
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
     }
 
     .description {
         font-size: 1rem;
+        line-height: 1.6;
     }
 
     .social-links {
-        margin-top: 20px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
     }
 
     .social-link {
-        min-width: 120px;
-        padding: 15px;
+        min-width: 140px;
+        padding: 15px 20px;
+        font-size: 0.95rem;
     }
 
     .features-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .main-header {
         flex-direction: column;
-        padding: 20px;
+        padding: 15px 20px;
+        gap: 15px;
+        text-align: center;
     }
 
     .left-header {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
     }
 
     .nav-links {
         flex-direction: column;
         text-align: center;
+        gap: 10px;
     }
 
     .social-icons {
-        margin-top: 20px;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 15px;
+    }
+    
+    .social-icons a {
+        margin-left: 0;
+    }
+    
+    .logo-image {
+        height: 32px;
+    }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+    .main-header {
+        padding: 10px 15px;
+    }
+    
+    .content {
+        padding: 15px 10px;
+    }
+    
+    .logo-image {
+        height: 30px;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+    
+    .social-icons a {
+        font-size: 1.2rem;
+        padding: 3px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+    }
+    
+    .description {
+        font-size: 0.9rem;
+    }
+    
+    .social-link {
+        min-width: 120px;
+        padding: 12px 15px;
+        font-size: 0.85rem;
+    }
+    
+    .features-grid {
+        gap: 15px;
+    }
+    
+    .footer-content {
+        padding: 20px 15px;
+    }
+    
+    .footer-content .social-links a {
+        font-size: 1.3rem;
+        margin: 0 10px;
     }
 }
