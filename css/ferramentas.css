@@ -127,16 +127,81 @@ main {
 h1 {
   font-size: 3rem;
   margin-bottom: 30px;
-  background: linear-gradient(45deg, var(--primary-blue), var(--light-blue));
+  background: linear-gradient(45deg, var(--white), var(--light-blue), var(--white));
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: titleGlow 3s ease-in-out infinite;
+  animation: gradientShift 4s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(107, 213, 255, 0.3);
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-blue), var(--light-blue), var(--primary-blue), transparent);
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 132, 255, 0.5);
 }
 
 @keyframes titleGlow {
   0%, 100% { filter: drop-shadow(0 0 5px var(--primary-blue)); }
   50% { filter: drop-shadow(0 0 20px var(--primary-blue)); }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(107, 213, 255, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(107, 213, 255, 0.9));
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .buttons-container {
@@ -325,12 +390,29 @@ html {
 
 /* --- Wizard Calculadora de Frete --- */
 .wizard-container {
-  background: var(--card-bg);
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(26, 26, 46, 0.8) 100%);
   border-radius: 16px;
   padding: 32px 24px 24px 24px;
   max-width: 1100px;
   margin: 0 auto 40px auto;
   box-shadow: 0 4px 24px #0006;
+  border: 1px solid rgba(0, 132, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.wizard-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--light-blue), var(--primary-blue));
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
+  border-radius: 16px 16px 0 0;
 }
 .wizard-steps {
   display: flex;
@@ -342,17 +424,22 @@ html {
 .wizard-step {
   color: #b6c6e3;
   font-weight: 600;
-  background: #23233a;
+  background: linear-gradient(135deg, #23233a, rgba(35, 35, 58, 0.8));
   border-radius: 20px;
   padding: 6px 18px;
   font-size: 1.08rem;
   position: relative;
   opacity: 0.7;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 132, 255, 0.1);
 }
 .wizard-step.active, .wizard-step.selected {
-  background: var(--primary-blue);
+  background: linear-gradient(45deg, var(--primary-blue), var(--light-blue));
   color: #fff;
   opacity: 1;
+  box-shadow: 0 4px 15px rgba(0, 132, 255, 0.3);
+  transform: translateY(-2px);
+  border-color: rgba(107, 213, 255, 0.3);
 }
 .wizard-step:not(:last-child)::after {
   content: '';
@@ -378,21 +465,32 @@ html {
   padding: 12px 14px;
   margin-bottom: 18px;
   border-radius: 8px;
-  border: none;
-  background: #23233a;
+  border: 1px solid rgba(0, 132, 255, 0.1);
+  background: linear-gradient(135deg, #23233a, rgba(35, 35, 58, 0.8));
   color: #fff;
   font-size: 1rem;
   outline: none;
-  transition: box-shadow 0.2s;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 .input-wizard:focus {
-  box-shadow: 0 0 0 2px var(--primary-blue);
+  box-shadow: 0 0 0 2px var(--primary-blue), 0 4px 15px rgba(0, 132, 255, 0.2);
+  border-color: var(--light-blue);
+  background: linear-gradient(135deg, #2a2a3e, rgba(42, 42, 62, 0.9));
+  transform: translateY(-1px);
 }
 label {
   font-size: 1.05rem;
   color: #c7e0ff;
   margin-bottom: 6px;
   display: block;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+label:hover {
+  color: var(--light-blue);
+  text-shadow: 0 0 5px rgba(107, 213, 255, 0.3);
 }
 
 /* Extras de produto e pacote */
@@ -403,7 +501,7 @@ label {
   margin-bottom: 10px;
 }
 .extras-produto-grid label, .extras-pacote-grid label {
-  background: #23233a;
+  background: linear-gradient(135deg, #23233a, rgba(35, 35, 58, 0.8));
   border-radius: 8px;
   padding: 12px 18px;
   display: flex;
@@ -411,10 +509,37 @@ label {
   gap: 10px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 132, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.extras-produto-grid label::before, .extras-pacote-grid label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 132, 255, 0.1), transparent);
+  transition: all 0.6s ease;
+  z-index: 0;
 }
 .extras-produto-grid label:hover, .extras-pacote-grid label:hover {
-  background: var(--hover-bg);
+  background: linear-gradient(135deg, var(--hover-bg), rgba(42, 42, 62, 0.9));
+  border-color: rgba(0, 132, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 132, 255, 0.2);
+}
+
+.extras-produto-grid label:hover::before, .extras-pacote-grid label:hover::before {
+  left: 100%;
+}
+
+.extras-produto-grid label span, .extras-pacote-grid label span {
+  position: relative;
+  z-index: 1;
 }
 .extras-produto-grid input[type="checkbox"], .extras-pacote-grid input[type="checkbox"] {
   accent-color: var(--primary-blue);
@@ -428,21 +553,89 @@ label {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
   margin-bottom: 20px;
+  position: relative;
 }
+
+.fretes-grid::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-blue), var(--light-blue), var(--primary-blue), transparent);
+  background-size: 200% 100%;
+  animation: gradientShift 4s ease-in-out infinite;
+  border-radius: 1px;
+}
+
+.frete-card:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.1s both; }
+.frete-card:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.2s both; }
+.frete-card:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.3s both; }
+.frete-card:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.4s both; }
+.frete-card:nth-child(5) { animation: fadeInUp 0.6s ease-out 0.5s both; }
+.frete-card:nth-child(6) { animation: fadeInUp 0.6s ease-out 0.6s both; }
+.frete-card:nth-child(7) { animation: fadeInUp 0.6s ease-out 0.7s both; }
+.frete-card:nth-child(8) { animation: fadeInUp 0.6s ease-out 0.8s both; }
+.frete-card:nth-child(9) { animation: fadeInUp 0.6s ease-out 0.9s both; }
+.frete-card:nth-child(10) { animation: fadeInUp 0.6s ease-out 1.0s both; }
+.frete-card:nth-child(11) { animation: fadeInUp 0.6s ease-out 1.1s both; }
+.frete-card:nth-child(12) { animation: fadeInUp 0.6s ease-out 1.2s both; }
+.frete-card:nth-child(13) { animation: fadeInUp 0.6s ease-out 1.3s both; }
 .frete-card {
-  background: #23233a;
+  background: linear-gradient(135deg, #23233a 0%, rgba(26, 26, 46, 0.8) 100%);
   border-radius: 12px;
   padding: 18px 16px 16px 16px;
   box-shadow: 0 2px 10px #0003;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 320px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 132, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transform-style: preserve-3d;
 }
+.frete-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--light-blue), var(--primary-blue));
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
+  border-radius: 12px 12px 0 0;
+}
+
+.frete-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 132, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
 .frete-card:hover {
-  box-shadow: 0 6px 24px #00bfff44;
-  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 132, 255, 0.2), 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px) rotateX(5deg) scale(1.02);
+  background: linear-gradient(135deg, var(--hover-bg) 0%, rgba(42, 42, 62, 0.9) 100%);
+  border-color: rgba(0, 132, 255, 0.3);
+}
+
+.frete-card:hover::after {
+  width: 300px;
+  height: 300px;
 }
 .frete-img {
   width: 80px;
@@ -451,18 +644,44 @@ label {
   border-radius: 8px;
   margin-bottom: 12px;
   background: #111;
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 0 5px rgba(0, 132, 255, 0.3));
+}
+
+.frete-card:hover .frete-img {
+  transform: scale(1.1) rotateY(10deg);
+  filter: drop-shadow(0 0 15px rgba(107, 213, 255, 0.6)) brightness(1.1);
 }
 .frete-card h3 {
   color: var(--light-blue);
   font-size: 1.15rem;
   margin-bottom: 8px;
   text-align: center;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.frete-card:hover h3 {
+  color: var(--white);
+  text-shadow: 0 0 10px rgba(107, 213, 255, 0.5);
+  transform: translateY(-2px);
 }
 .frete-card p {
   color: #b6c6e3;
   font-size: 0.98rem;
   margin-bottom: 14px;
   text-align: center;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.frete-card:hover p {
+  color: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
 }
 .resultado-frete {
   margin-top: 10px;
@@ -470,6 +689,16 @@ label {
   font-weight: 600;
   font-size: 1.08rem;
   min-height: 24px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
+}
+
+.frete-card:hover .resultado-frete {
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+  transform: translateY(-1px);
 }
 
 /* Botões de navegação */
@@ -477,19 +706,38 @@ label {
   min-width: 120px;
   font-size: 1rem;
   padding: 10px 22px;
-  background: var(--primary-blue);
+  background: linear-gradient(45deg, var(--primary-blue), var(--light-blue));
   color: #fff;
   border: none;
   border-radius: 8px;
   box-shadow: 0 2px 8px #00bfff33;
-  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
-  
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.wizard-pane .main-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
 }
 .wizard-pane .main-button:hover {
-  background: var(--light-blue);
-  color: #00051d;
-  box-shadow: 0 4px 16px #00bfff55;
+  background: linear-gradient(45deg, var(--light-blue), var(--primary-blue));
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 132, 255, 0.4);
   cursor: pointer;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.wizard-pane .main-button:hover::before {
+  left: 100%;
 }
 
 /* Responsividade */

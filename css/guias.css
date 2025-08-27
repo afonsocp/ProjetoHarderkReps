@@ -154,17 +154,20 @@ main h1 {
 
 .main-button {
   display: inline-block;
-  padding: 15px 30px;
+  padding: 12px 25px;
   color: var(--white);
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   text-align: center;
   min-width: 250px;
   margin: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform-style: preserve-3d;
 }
 
 .main-button.cadastre {
@@ -183,19 +186,22 @@ main h1 {
 }
 
 .main-button:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.02);
 }
 
 .main-button.cadastre:hover {
-  box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 255, 136, 0.4), 0 4px 15px rgba(0, 204, 106, 0.2);
+  border-color: rgba(0, 255, 136, 0.3);
 }
 
 .main-button.tutorial:hover {
-  box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+  box-shadow: 0 12px 30px rgba(255, 68, 68, 0.4), 0 4px 15px rgba(204, 0, 0, 0.2);
+  border-color: rgba(255, 68, 68, 0.3);
 }
 
 .main-button.discord:hover {
-  box-shadow: 0 6px 20px rgba(93, 0, 255, 0.6);
+  box-shadow: 0 12px 30px rgba(93, 0, 255, 0.6), 0 4px 15px rgba(85, 98, 238, 0.2);
+  border-color: rgba(85, 98, 238, 0.3);
 }
 
 .main-button::before {
@@ -207,10 +213,30 @@ main h1 {
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: 0.5s;
+  z-index: 1;
+}
+
+.main-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+  z-index: 0;
 }
 
 .main-button:hover::before {
   left: 100%;
+}
+
+.main-button:hover::after {
+  width: 200px;
+  height: 200px;
 }
 
 .button-logo {
@@ -222,11 +248,39 @@ main h1 {
   vertical-align: middle;
   background: #fff2;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  transition: transform 0.3s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
 }
 
 .main-button:hover .button-logo {
-  transform: scale(1.08) rotate(-3deg);
+  transform: scale(1.1) rotate(-5deg);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5)) brightness(1.2);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.20);
+}
+
+.main-button i {
+  font-size: 1.2rem;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.main-button:hover i {
+  transform: scale(1.1) rotateY(10deg);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  text-shadow: 0 0 10px rgba(107, 213, 255, 0.7);
+}
+
+.main-button span {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.main-button:hover span {
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 .main-button.tutorial .button-logo {
@@ -236,21 +290,32 @@ main h1 {
 h2 {
   text-align: center;
   margin-bottom: 40px;
-  font-size: 2.5rem;
   color: var(--white);
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, var(--white), var(--light-blue), var(--white));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(107, 213, 255, 0.3);
   position: relative;
-  padding-bottom: 15px;
 }
 
 h2::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
+  width: 100px;
   height: 3px;
-  background: var(--primary-blue);
+  background: linear-gradient(90deg, transparent, var(--primary-blue), var(--light-blue), var(--primary-blue), transparent);
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 132, 255, 0.5);
 }
 
 footer {
@@ -315,6 +380,54 @@ html {
   background: var(--light-blue);
 }
 
+/* Keyframe Animations */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(107, 213, 255, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(107, 213, 255, 0.9));
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
 @media (max-width: 768px) {
   .nav-links {
     gap: 12px;
@@ -336,33 +449,99 @@ html {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
+  position: relative;
 }
 
+.guide-container::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-blue), var(--light-blue), var(--primary-blue), transparent);
+  background-size: 200% 100%;
+  animation: gradientShift 4s ease-in-out infinite;
+  border-radius: 1px;
+}
+
+.guide-block:nth-child(1) { animation-delay: 0.1s; }
+.guide-block:nth-child(2) { animation-delay: 0.2s; }
+.guide-block:nth-child(3) { animation-delay: 0.3s; }
+.guide-block:nth-child(4) { animation-delay: 0.4s; }
+.guide-block:nth-child(5) { animation-delay: 0.5s; }
+.guide-block:nth-child(6) { animation-delay: 0.6s; }
+.guide-block:nth-child(7) { animation-delay: 0.7s; }
+.guide-block:nth-child(8) { animation-delay: 0.8s; }
+
 .guide-block {
-  background: var(--card-bg);
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(26, 26, 46, 0.8) 100%);
   border-radius: 15px;
   padding: 25px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(0, 132, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transform-style: preserve-3d;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.guide-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--light-blue), var(--primary-blue));
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
+  border-radius: 15px 15px 0 0;
+}
+
+.guide-block::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 132, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+  z-index: 0;
 }
 
 .guide-block:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  border-color: var(--primary-blue);
+  transform: translateY(-8px) rotateX(5deg);
+  background: linear-gradient(135deg, var(--hover-bg) 0%, rgba(42, 42, 62, 0.9) 100%);
+  box-shadow: 0 15px 35px rgba(0, 132, 255, 0.2), 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 132, 255, 0.3);
+}
+
+.guide-block:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 .guide-icon {
   font-size: 2.5rem;
   color: var(--primary-blue);
   margin-bottom: 20px;
-  transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 5px rgba(0, 132, 255, 0.3));
 }
 
 .guide-block:hover .guide-icon {
-  transform: scale(1.1);
+  transform: scale(1.15) rotateY(10deg);
+  color: var(--light-blue);
+  filter: drop-shadow(0 0 15px rgba(107, 213, 255, 0.6));
+  animation: glow 2s ease-in-out infinite;
 }
 
 .guide-title {
@@ -370,24 +549,69 @@ html {
   color: var(--white);
   margin-bottom: 15px;
   font-weight: 600;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.guide-block:hover .guide-title {
+  color: var(--light-blue);
+  text-shadow: 0 0 10px rgba(107, 213, 255, 0.5);
+  transform: translateY(-2px);
 }
 
 .guide-description {
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.guide-block:hover .guide-description {
+  color: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
 }
 
 .guide-link {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: #0084ff;
+  padding: 12px 25px;
+  background: linear-gradient(45deg, var(--primary-blue), var(--light-blue));
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-family: 'Poppins', Arial, sans-serif;
   font-size: 16px;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 132, 255, 0.3);
+}
+
+.guide-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.guide-link:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 132, 255, 0.4);
+  background: linear-gradient(45deg, var(--light-blue), var(--primary-blue));
+}
+
+.guide-link:hover::before {
+  left: 100%;
 }
 
 /* Estilos do Modal */
